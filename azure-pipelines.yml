@@ -37,9 +37,6 @@ stages:
           npm i -g rimraf
         displayName: 'Install rimraf'
       - script: |
-          npm install -g grunt-nwabap-ui5uploader
-        displayName: Install grunt ui5 uploader
-      - script: |
           npm run lint
         displayName: 'Run eslint'
       - script: |
@@ -52,14 +49,8 @@ stages:
           ui5 build -a --clean-dest
         displayName: 'Build Application'
       - script: |
-          npm install -g grunt-cli
-        displayName: Install grunt cli Globally
+          npm install nwabap-ui5uploader --save-dev
+        displayName: 'nwabap-ui5uploader'
       - script: |
-          npm install grunt --save-dev
-        displayName: Install grunt locally
-      - script: |
-          npm install grunt-nwabap-ui5uploader --save-dev
-        displayName: Install grunt ui5uploader locally
-      - script: |
-          grunt --username="DEV_ECQ2" --password="Welcome1" --server="http://in-blr-1709:8000" --request="S48K901584" --pkg="ZAZUREDEVOPS"
-        displayName: 'Deploy process'
+          npx nwabap upload
+        displayName: 'upload BSS'
