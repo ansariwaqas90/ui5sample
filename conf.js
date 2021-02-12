@@ -1,7 +1,6 @@
 exports.config = {
 	profile: 'integration',
-
-  	baseUrl: 'http://localhost:8080/index.html',
+	baseUrl: 'http://localhost:8080/index.html',
 	connectionConfigs: {
 		direct: {
 			binaries: {
@@ -12,15 +11,6 @@ exports.config = {
 		}
 	},
 	browsers: [{
-	browserName: 'chrome',
-	capabilities: {
-		remoteWebDriverOptions: {
-		maximized: false,
-		browserSize: {
-			width: 1920,
-			height: 1067
-		}
-		}
-	}
+		browserName: "chromeHeadless"
 	}]
 };
