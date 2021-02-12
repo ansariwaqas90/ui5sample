@@ -12,7 +12,6 @@ variables:
 stages:
 - stage: PluginInstall
   displayName: installation
-  condition: and(succeeded(), eq(variables.isMain, true))
   jobs:
     - job: InstallPlugin
       displayName: Install Plugin
@@ -40,42 +39,18 @@ stages:
       - script: |
           npm install -g grunt-nwabap-ui5uploader
         displayName: Install grunt ui5 uploader
-- stage: ReviewTest
-  displayName: Review and Test
-  dependsOn: PluginInstall
-  condition: and(succeeded(), eq(variables.isMain, true))
-  jobs:
-    - job: RunReview
-      displayName: UI5 and Opa Test
-      steps:
       - script: |
           npm run lint
         displayName: 'Run eslint'
       - script: |
           npm run karma-ci
         displayName: 'Run unit test and opa test'
-- stage: Build
-  displayName: Build
-  dependsOn: ReviewTest
-  condition: and(succeeded(), eq(variables.isMain, true))
-  jobs:
-    - job: buildcode
-      displayName: Build UI5
-      steps:
       - script: |
           npm install --global @ui5/cli
         displayName: 'UI5-cli'
       - script: |
           ui5 build -a --clean-dest
         displayName: 'Build Application'
-- stage: Deploy
-  displayName: Deploy
-  dependsOn: Build
-  condition: and(succeeded(), eq(variables.isMain, true))
-  jobs:
-    - job: deploycode
-      displayName: Deploy to Gateway
-      steps:
       - script: |
           npm install -g grunt-cli
         displayName: Install grunt cli Globally
