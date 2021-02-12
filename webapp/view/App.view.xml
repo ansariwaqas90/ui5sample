@@ -12,7 +12,6 @@
 							</f:DynamicPageHeader>
 						</f:header>
 						<f:content>
-							git commit -m "GIT Comment"<Text text="Testing application"></Text>
 							<List id="todoList"
 								items="{ path: '/todos', events: { change: '.updateItemsLeftCount' } }"
 								mode="None"
