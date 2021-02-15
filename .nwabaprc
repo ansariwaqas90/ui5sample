@@ -5,7 +5,7 @@
     "conn_user": "DEV_ECQ2",
     "conn_password": "Welcome1",
     "abap_package": "ZAZUREDEVOPS",
-    "abap_bsp": "zsampleui5",
+    "abap_bsp": "ZAZUREDEVOPS",
     "abap_bsp_text": "sample app To Do",
     "abap_transport" : "S48K901584"
 }
